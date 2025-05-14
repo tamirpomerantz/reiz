@@ -1445,8 +1445,16 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Toggle between square, narrow, and wide board layouts
     resizeToggle.addEventListener('click', function() {
+        // Check if we're on mobile and prevent wide mode
+        const isMobile = window.innerWidth < 600;
+        
         // Increment the board mode (0: standard, 1: narrow, 2: wide)
-        boardMode = (boardMode + 1) % 3;
+        // On mobile, only toggle between standard (0) and narrow (1)
+        if (isMobile && boardMode === 1) {
+            boardMode = 0; // Skip wide mode on mobile
+        } else {
+            boardMode = (boardMode + 1) % 3;
+        }
         
         // Update body classes based on the new mode
         document.body.classList.remove('narrow-mode', 'wide-mode');
@@ -1516,7 +1524,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update download button color after layout change
         updateDownloadButtonColor();
     });
-    
     // Helper function to get the current color for a board
     function getColorForBoard(board) {
         if (board.colorState === 0) {

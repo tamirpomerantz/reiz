@@ -38,8 +38,8 @@ body {
     --cal-size: clamp(250px, 50vw, min(55vh, 800px));
 
 }
-body.narrow-mode {
-    /* --cal-size: clamp(250px, calc(50vw - 200px), calc(min(55vh, 800px) - 200px)); */
+body.wide-mode {
+    /* --cal-size: 200px; */
 }
 
 body {
