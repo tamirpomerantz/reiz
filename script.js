@@ -642,76 +642,76 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         function handleDrag(e) {
-            if (!boardContainer.classList.contains('dragging')) return;
+            // if (!boardContainer.classList.contains('dragging')) return;
             
-            const deltaX = e.clientX - startX;
-            const deltaY = e.clientY - startY;
-            const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+            // const deltaX = e.clientX - startX;
+            // const deltaY = e.clientY - startY;
+            // const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
             
-            // Apply transform
-            boardContainer.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+            // // Apply transform
+            // boardContainer.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
             
-            // Change color to gray if dragged beyond 200px
-            if (distance > 200) {
-                const canvas = boardContainer.querySelector('canvas');
-                if (canvas) {
-                    drawShape(canvas, config.shape, '#666666');
-                }
-            } else {
-                // Restore original color
-                const canvas = boardContainer.querySelector('canvas');
-                if (canvas) {
-                    const color = getColorForBoard(boards[parseInt(boardContainer.dataset.index)]);
-                    drawShape(canvas, config.shape, color);
-                }
-            }
+            // // Change color to gray if dragged beyond 200px
+            // if (distance > 200) {
+            //     const canvas = boardContainer.querySelector('canvas');
+            //     if (canvas) {
+            //         drawShape(canvas, config.shape, '#666666');
+            //     }
+            // } else {
+            //     // Restore original color
+            //     const canvas = boardContainer.querySelector('canvas');
+            //     if (canvas) {
+            //         const color = getColorForBoard(boards[parseInt(boardContainer.dataset.index)]);
+            //         drawShape(canvas, config.shape, color);
+            //     }
+            // }
         }
         
         function handleDragEnd(e) {
-            if (!boardContainer.classList.contains('dragging')) return;
+            // if (!boardContainer.classList.contains('dragging')) return;
             
-            const deltaX = e.clientX - startX;
-            const deltaY = e.clientY - startY;
-            const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-            const dragDuration = Date.now() - dragStartTime;
+            // const deltaX = e.clientX - startX;
+            // const deltaY = e.clientY - startY;
+            // const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+            // const dragDuration = Date.now() - dragStartTime;
             
-            // Remove dragging class
-            boardContainer.classList.remove('dragging');
+            // // Remove dragging class
+            // boardContainer.classList.remove('dragging');
             
-            // Remove event listeners
-            document.removeEventListener('mousemove', handleDrag);
-            document.removeEventListener('mouseup', handleDragEnd);
+            // // Remove event listeners
+            // document.removeEventListener('mousemove', handleDrag);
+            // document.removeEventListener('mouseup', handleDragEnd);
             
-            if (distance > 200) {
-                // If dragged more than 100px, make the board disappear
-                const controlBtn = controlsContainer.querySelector(`.control-btn[data-board-index="${i}"]`);
-                if (controlBtn) {
-                    // Click the control button until the board is hidden
-                    const clickUntilHidden = () => {
-                        if (boardContainer.style.display !== 'none') {
-                            controlBtn.click();
-                            setTimeout(clickUntilHidden, 50); // Small delay between clicks
-                            setTimeout(() => {
-                                gsap.to(boardContainer, {
-                                    x: 0,
-                                    y: 0,
-                                    duration: 0.3,
-                                    ease: "elastic.out(1, 0.7)"
-                                });
-                            }, 100);
-                        }
-                    };
-                    clickUntilHidden();
-                }
-            } else {
-                // Snap back to original position
-                gsap.to(boardContainer, {
-                    x: 0,
-                    y: 0,
-                    duration: 0.3,
-                    ease: "elastic.out(1, 0.7)"
-                });
-            }
+            // if (distance > 200) {
+            //     // If dragged more than 100px, make the board disappear
+            //     const controlBtn = controlsContainer.querySelector(`.control-btn[data-board-index="${i}"]`);
+            //     if (controlBtn) {
+            //         // Click the control button until the board is hidden
+            //         const clickUntilHidden = () => {
+            //             if (boardContainer.style.display !== 'none') {
+            //                 controlBtn.click();
+            //                 setTimeout(clickUntilHidden, 50); // Small delay between clicks
+            //                 setTimeout(() => {
+            //                     gsap.to(boardContainer, {
+            //                         x: 0,
+            //                         y: 0,
+            //                         duration: 0.3,
+            //                         ease: "elastic.out(1, 0.7)"
+            //                     });
+            //                 }, 100);
+            //             }
+            //         };
+            //         clickUntilHidden();
+            //     }
+            // } else {
+            //     // Snap back to original position
+            //     gsap.to(boardContainer, {
+            //         x: 0,
+            //         y: 0,
+            //         duration: 0.3,
+            //         ease: "elastic.out(1, 0.7)"
+            //     });
+            // }
         }
         
         // Add click event listener to the board container
