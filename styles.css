@@ -417,6 +417,10 @@ body.light-mode .theme-toggle .moon-icon {
     opacity: 0;
     transition: opacity 0.3s ease 0.1s;
 }
+.drawer .description a {
+    color: var(--color-text);
+    text-decoration: underline;
+}
 
 .drawer.open .description {
     opacity: 1;
